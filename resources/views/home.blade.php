@@ -30,9 +30,9 @@
                     @foreach ($products as $product)
                         <tr>
                             <td>{{ $product->name }}</td>
-                            <td>{{ $product->price }}</td>
-                            <td>{{ $product->stock }}</td>
-                            <td>{{ $product->category->name }}</td>
+                            <td style="text-align: center">{{ $product->price }}</td>
+                            <td style="text-align: center">{{ $product->stock }}</td>
+                            <td style="text-align: center">{{ $product->category->name }}</td>
                             <td>@include('layouts.actions')</td>
                         </tr>
                     @endforeach

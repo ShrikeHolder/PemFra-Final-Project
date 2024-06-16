@@ -26,3 +26,9 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::resource('products', HomeController::class);
+
+// Route::get('download-file/{productId}', [
+//     HomeController::class, 'productId'
+// ])->name('products.downloadFile');
+
+Route::get('/products/download/{productId}', [HomeController::class, 'downloadFile'])->name('products.downloadFile');

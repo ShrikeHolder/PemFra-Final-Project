@@ -59,7 +59,7 @@
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
                         <div class="card h-100">
-                            <img src="{{ Vite::asset('resources/images/7162ec90-95c8-40e4-92c8-2c0691742c09.jpg') }}">
+                            <img src="{{ Vite::asset('resources/images/Abread.jpg') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Bread</h5>
                                 <p class="card-text">Menikmati hangat dan kenyamanan dari roti yang baru dipanggang,
@@ -72,7 +72,7 @@
                     </div>
                     <div class="col">
                         <div class="card h-100">
-                            <img src="{{ Vite::asset('resources/images/nyu.jpg') }}">
+                            <img src="{{ Vite::asset('resources/images/Acake.jpg') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Pastry</h5>
                                 <p class="card-text">Siapkan diri Anda untuk mengalami sensasi rasa pastry yang luar
@@ -85,7 +85,7 @@
                     </div>
                     <div class="col">
                         <div class="card h-100">
-                            <img src="{{ Vite::asset('resources/images/nyu1.jpg') }}">
+                            <img src="{{ Vite::asset('resources/images/Apastry.jpg') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Cake</h5>
                                 <p class="card-text">Perkenalkan diri Anda pada kelezatan cake yang tak terlupakan

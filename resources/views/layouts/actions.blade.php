@@ -1,4 +1,4 @@
-<div class="d-flex">
+<div class="d-flex justify-content-center">
     <a href="{{ route('products.show', ['product' => $product->id]) }}" class="btn btn-outline-dark btn-sm me-2">
         <i class="bi-person-lines-fill"></i>
     </a>

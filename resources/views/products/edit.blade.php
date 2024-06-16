@@ -39,7 +39,7 @@
                                 <div class="text-danger"><small>{{ $message }}</small></div>
                             @enderror
                         </div>
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="category" class="form-label">Category</label>
                             <select name="category" id="category"
                                 class="form-select @error('category') is-invalid @enderror">
@@ -62,7 +62,7 @@
                                     {{ $product->original_filename }}</small>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="delete_photo" id="delete_photo">
-                                    <label class="form-check-label" for="delete_photo">Delete current Photo</label>
+                                    <label class="form-check-label" for="delete_photo">Delete current photo</label>
                                 </div>
                             @endif
                         </div>

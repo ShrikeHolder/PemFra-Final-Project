@@ -5,32 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
         $pageTitle = 'Product List';
-        // ELOQUENT
         $products = Product::all();
         return view('home', [
             'pageTitle' => $pageTitle,
@@ -41,7 +29,6 @@ class HomeController extends Controller
     public function create()
     {
         $pageTitle = 'Create Product';
-        // ELOQUENT
         $categories = Category::all();
         return view('products.create', compact('pageTitle', 'categories'));
     }
@@ -60,15 +47,14 @@ class HomeController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        // Get File
-        $file = $request->file('cv');
+
+        $file = $request->file('photo');
         if ($file != null) {
             $originalFilename = $file->getClientOriginalName();
             $encryptedFilename = $file->hashName();
-            // Store File
             $file->store('public/files');
         }
-        // ELOQUENT
+
         $product = new Product;
         $product->name = $request->name;
         $product->price = $request->price;
@@ -84,8 +70,7 @@ class HomeController extends Controller
 
     public function show(string $id)
     {
-        $pageTitle = 'product Detail';
-        // ELOQUENT
+        $pageTitle = 'Product Detail';
         $product = Product::find($id);
         return view('products.show', compact('pageTitle', 'product'));
     }
@@ -93,7 +78,6 @@ class HomeController extends Controller
     public function edit(string $id)
     {
         $pageTitle = 'Edit product';
-        // ELOQUENT
         $categories = Category::all();
         $product = Product::find($id);
         return view('products.edit', compact(
@@ -117,53 +101,59 @@ class HomeController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        // ELOQUENT
-        $product = product::find($id);
+
+        $product = Product::find($id);
         $product->name = $request->name;
         $product->price = $request->price;
         $product->stock = $request->stock;
         $product->category_id = $request->category;
-        // Handle file CV
-        if ($request->has('delete_cv') && $product->encrypted_filename) {
-            // Hapus file lama
+
+        if ($request->has('delete_photo') && $product->encrypted_filename) {
             if (Storage::exists('public/files/' . $product->encrypted_filename)) {
                 Storage::delete('public/files/' . $product->encrypted_filename);
             }
-            // Reset informasi file di database
             $product->original_filename = null;
             $product->encrypted_filename = null;
-        } elseif ($request->hasFile('cv') && $request->file('cv')->isValid()) {
-            $file = $request->file('cv');
+        } elseif ($request->hasFile('photo') && $request->file('photo')->isValid()) {
+            $file = $request->file('photo');
             $originalFilename = $file->getClientOriginalName();
             $encryptedFilename = $file->hashName();
-            // Hapus file lama jika ada
             if ($product->encrypted_filename && Storage::exists('public/files/' . $product->encrypted_filename)) {
                 Storage::delete('public/files/' . $product->encrypted_filename);
             }
-            // Simpan file baru
             $file->store('public/files');
-            // Perbarui informasi file di database
             $product->original_filename = $originalFilename;
             $product->encrypted_filename = $encryptedFilename;
         }
+
         $product->save();
         return redirect()->route('home');
     }
 
     public function destroy(string $id)
     {
-        // ELOQUENT
-        product::find($id)->delete();
+        $product = Product::find($id);
+        if ($product->encrypted_filename && Storage::exists('public/files/' . $product->encrypted_filename)) {
+            Storage::delete('public/files/' . $product->encrypted_filename);
+        }
+        $product->delete();
         return redirect()->route('home');
     }
 
     public function downloadFile($productId)
     {
-        $product = product::find($productId);
-        $encryptedFilename = 'public/files/' . $product->encrypted_filename;
-        $downloadFilename = Str::lower($product->firstname . '_' . $product->lastname . '_photo');
-        if (Storage::exists($encryptedFilename)) {
-            return Storage::download($encryptedFilename, $downloadFilename);
+        $product = Product::find($productId);
+
+        if ($product && $product->encrypted_filename) {
+            $encryptedFilename = 'public/files/' . $product->encrypted_filename;
+            $extension = pathinfo($product->original_filename, PATHINFO_EXTENSION);
+            $validExtensions = ['jpg', 'jpeg', 'png'];
+            if (in_array($extension, $validExtensions) && Storage::exists($encryptedFilename)) {
+                $downloadFilename = Str::slug($product->name) . '.' . $extension;
+                return Storage::download($encryptedFilename, $downloadFilename);
+            }
         }
+
+        return redirect()->back()->with('error', 'File not found.');
     }
 }

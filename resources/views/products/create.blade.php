@@ -35,7 +35,7 @@
                                 <div class="text-danger"><small>{{ $message }}</small></div>
                             @enderror
                         </div>
-                        <div class="col-md-12 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label for="category" class="form-label">Category</label>
                             <select name="category" id="category"
                                 class="form-select @error('category') is-invalid @enderror">
@@ -59,7 +59,7 @@
                     <div class="row">
                         <div class="col-md-6 d-grid">
                             <a href="{{ route('home') }}" class="btn btn-outline-dark btn-lg mt-3"><i
-                                    class="bi-arrow-left-circle me-2"></i> Cancel</a>
+                                    class="bi-arrow-left-circle me-2"></i>Cancel</a>
                         </div>
                         <div class="col-md-6 d-grid">
                             <button type="submit" class="btn btn-dark btn-lg mt-3"><i class="bi-check-circle me-2"></i>
