@@ -14,7 +14,7 @@ class productController extends Controller
 {
     public function index()
     {
-        $pageTitle = 'product List';
+        $pageTitle = 'Product List';
         // ELOQUENT
         $products = Product::all();
         return view('home', [
@@ -25,24 +25,22 @@ class productController extends Controller
 
     public function create()
     {
-        $pageTitle = 'Create product';
+        $pageTitle = 'Create Product';
         // ELOQUENT
         $categories = Category::all();
-        return view('product.create', compact('pageTitle', 'categories'));
+        return view('products.create', compact('pageTitle', 'categories'));
     }
 
     public function store(Request $request)
     {
         $messages = [
-            'required' => ':Attribute harus diisi.',
-            'email' => 'Isi :attribute dengan format yang benar',
-            'numeric' => 'Isi :attribute dengan angka'
+            'required' => 'Attribute must be filled.',
+            'numeric' => 'Fill attribute with numbers only.'
         ];
         $validator = Validator::make($request->all(), [
-            'firstName' => 'required',
-            'lastName' => 'required',
-            'email' => 'required|email',
-            'age' => 'required|numeric',
+            'name' => 'required',
+            'price' => 'required',
+            'stock' => 'required|numeric',
         ], $messages);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -152,7 +150,7 @@ class productController extends Controller
     {
         $product = product::find($productId);
         $encryptedFilename = 'public/files/' . $product->encrypted_filename;
-        $downloadFilename = Str::lower($product->firstname . '_' . $product->lastname . '_cv.pdf');
+        $downloadFilename = Str::lower($product->firstname . '_' . $product->lastname . '_photo');
         if (Storage::exists($encryptedFilename)) {
             return Storage::download($encryptedFilename, $downloadFilename);
         }

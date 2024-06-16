@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.A')
 @section('custom-css')
     <style>
         body {

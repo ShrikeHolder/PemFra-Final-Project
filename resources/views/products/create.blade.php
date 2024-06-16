@@ -1,88 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $pageTitle }}</title>
-    @vite('resources/sass/app.scss')
-</head>
-
-<body>
-    {{-- <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-        <div class="container">
-            <a href="{{ route('home') }}" class="navbar-brand mb-0 h1"><i class="bi-hexagon-fill me-2"></i> Data
-                Master</a>
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <hr class="d-lg-none text-white-50">
-                <ul class="navbar-nav flex-row flex-wrap">
-                    <li class="nav-item col-2 col-md-auto"><a href="{{ route('home') }}" class="nav-link">Home</a></li>
-                    <li class="nav-item col-2 col-md-auto"><a href="{{ route('employees.index') }}"
-                            class="nav-link">Employee List</a></li>
-                </ul>
-                <hr class="d-lg-none text-white-50">
-                <a href="{{ route('profile') }}" class="btn btn-outline-light my-2 ms-md-auto"><i
-                        class="bi-person-circle me-1"></i> My Profile</a>
-            </div>
-        </div>
-    </nav> --}}
+@extends('layouts.app')
+@section('content')
     <div class="container-sm mt-5">
-        <form action="{{ route('products.store') }}" method="POST">
+        <form action="{{ route('employees.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row justify-content-center">
                 <div class="p-5 bg-light rounded-3 border col-xl-6">
                     <div class="mb-3 text-center">
                         <i class="bi-person-circle fs-1"></i>
-                        <h4>Create Employee</h4>
+                        <h4>Add Product</h4>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="firstName" class="form-label">First Name</label>
-                            <input class="form-control @error('firstName') is-invalid @enderror" type="text"
-                                name="firstName" id="firstName" value="{{ old('firstName') }}"
-                                placeholder="Enter First Name">
-                            @error('firstName')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
+                            <label for="name" class="form-label">Product Name</label>
+                            <input class="form-control @error('name') is-invalid @enderror" type="text" name="name"
+                                id="name" value="{{ old('name') }}" placeholder="Enter Product Name">
+                            @error('name')
+                                <div class="text-danger"><small>{{ $message }}</small></div>
                             @enderror
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="lastName" class="form-label">Last Name</label>
-                            <input class="form-control @error('lastName') is-invalid @enderror" type="text"
-                                name="lastName" id="lastName" value="{{ old('lastName') }}"
-                                placeholder="Enter Last Name">
-                            @error('lastName')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
+                            <label for="price" class="form-label">Price</label>
+                            <input class="form-control @error('price') is-invalid @enderror" type="text" name="price"
+                                id="price" value="{{ old('price') }}" placeholder="Enter Product Price">
+                            @error('price')
+                                <div class="text-danger"><small>{{ $message }}</small></div>
                             @enderror
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input class="form-control @error('email') is-invalid @enderror" type="text"
-                                name="email" id="email" value="{{ old('email') }}" placeholder="Enter Email">
-                            @error('email')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
+                            <label for="stock" class="form-label">Stock</label>
+                            <input class="form-control @error('stock') is-invalid @enderror" type="text" name="stock"
+                                id="stock" value="{{ old('stock') }}" placeholder="Enter Current Stock">
+                            @error('stock')
+                                <div class="text-danger"><small>{{ $message }}</small></div>
                             @enderror
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <label for="age" class="form-label">Age</label>
-                            <input class="form-control @error('age') is-invalid @enderror" type="text" name="age"
-                                id="age" value="{{ old('age') }}" placeholder="Enter Age">
-                            @error('age')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="category" class="form-label">Category</label>
+                            <select name="category" id="category"
+                                class="form-select @error('category') is-invalid @enderror">
+                                @foreach ($positions as $position)
+                                    <option value="{{ $position->id }}"
+                                        {{ old('category') == $position->id ? 'selected' : '' }}>
+                                        {{ $position->code . ' - ' . $position->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('category')
+                                <div class="text-danger"><small>{{ $message }}</small></div>
                             @enderror
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="photo" class="form-label">Product Photo</label>
+                            <input type="file" class="form-control" name="photo" id="photo">
                         </div>
                     </div>
                     <hr>
@@ -100,7 +70,4 @@
             </div>
         </form>
     </div>
-    @vite('resources/js/app.js')
-</body>
-
-</html>
+@endsection
