@@ -26,7 +26,7 @@
                     @if (Route::has('login'))
                         <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
                             @auth
-                                <a class="nav-link text-light fw-semibold" href="{{ url('/home') }}">Home</a>
+                                <a class="nav-link text-light fw-semibold" href="{{ url('/home') }}">Login</a>
                             @else
                                 <a class="nav-link text-light fw-semibold" href="{{ route('login') }}">Login</a>
                             @endauth

@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('content')
     <div class="container-sm mt-5">
-        <form action="{{ route('employees.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row justify-content-center">
                 <div class="p-5 bg-light rounded-3 border col-xl-6">
                     <div class="mb-3 text-center">
-                        <i class="bi-person-circle fs-1"></i>
+                        <i class="bi-box-seam fs-1"></i>
                         <h4>Add Product</h4>
                     </div>
                     <hr>
@@ -39,10 +39,10 @@
                             <label for="category" class="form-label">Category</label>
                             <select name="category" id="category"
                                 class="form-select @error('category') is-invalid @enderror">
-                                @foreach ($positions as $position)
-                                    <option value="{{ $position->id }}"
-                                        {{ old('category') == $position->id ? 'selected' : '' }}>
-                                        {{ $position->code . ' - ' . $position->name }}
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}"
+                                        {{ old('category') == $category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}
                                     </option>
                                 @endforeach
                             </select>
