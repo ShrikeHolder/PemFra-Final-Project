@@ -2,8 +2,20 @@
 
 @section('content')
     @include('partials.navbar')
+    <div class="container-fluid text-center" style="background-color:#F4CDB0">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <img src="{{ Vite::asset('resources/images/3.png') }}" class="d-block mx-lg-auto img-fluid"
+                    width="700" height="500" loading="lazy">
+            </div>
+            <div class="col-4">
+                <h1 class="display-6 fw-bold lh-1 my-5" style="color: #D28468">Selamat datang di Inventory</h1>
+                <p class="text-center fw-bold display-1 my-5" style="color: #644961">BREADSHIP</p>
+            </div>
+        </div>
+    </div>
     <div class="container mt-4">
-        <div class="row mb-0">
+        <div class="row justify-content-center">
             <div class="col-lg-9 col-xl-10">
                 <h4 class="mb-3">Product List</h4>
             </div>
@@ -39,5 +51,8 @@
                 </tbody>
             </table>
         </div>
+        <br>
+        <br>
+        <br>
     </div>
 @endsection

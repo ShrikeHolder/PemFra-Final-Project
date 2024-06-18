@@ -4,6 +4,26 @@
         body {
             background-color: #F4CDB0;
         }
+        .btn-custom {
+            background-color: #644961;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        .btn-custom1 {
+            background-color: #F4CDB0;
+            border: none;
+            color: #644961;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
     </style>
 @endsection
 @section('content')
@@ -11,7 +31,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card" style="margin-top: 100px">
-                    <div class="card-header" style="text-align: center;">{{ __('Login') }}</div>
+                    <br>
+                    {{-- <div class="card-header" style="text-align: center;">{{ __('Login') }}</div> --}}
+                    <p class="text-center fw-bold display-2" style="color: #644961">Login</p>
+                    <br>
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
@@ -43,13 +66,18 @@
                                     @enderror
                                 </div>
                             </div>
+                            <br>
                             <div class="row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                <div class="col-md- 10 offset-md-4">
+                                    <button type="submit" class="btn btn-custom fw-semibold">
                                         {{ __('Login') }}
+                                    </button>
+                                    <button type="submit" class="btn btn-custom1">
+                                        <a class="nav-link fw-semibold" href="{{ route('register') }}">Registrasi</a>
                                     </button>
                                 </div>
                             </div>
+                            <br>
                         </form>
                     </div>
                 </div>

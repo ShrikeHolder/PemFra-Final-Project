@@ -16,12 +16,7 @@
             <a class="navbar-brand fw-bold fs-4 px-5" href="#"><img class="d-inline-block align-text-top"
                     src="{{ Vite::asset('resources/images/logo.png') }}" width="45" height="40">Breadship</a>
             <ul class="navbar-nav mb-2 mb-md-0 fs-5" style="padding-right: 5rem;">
-                <li class="nav-item">
-                    <a class="nav-link text-light fw-semibold" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light fw-semibold" href="#">Product</a>
-                </li>
+
                 <li class="nav-item">
                     @if (Route::has('login'))
                         <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
@@ -109,136 +104,121 @@
                 <div class="row row-cols-1 row-cols-md-5 g-6">
                     <div class="col py-4">
                         <div class="card h-100">
-                            <img src="{{ Vite::asset('resources/images/roti1.jpeg') }}">
+                            <img src="{{ Vite::asset('resources/images/BRotiSosisKeju.jpeg') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Roti Sosis Keju</h5>
-                                <h5 class="card-title" style="color: #644961">Rp.12.000,00</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col py-4">
                         <div class="card h-100">
-                            <img src="{{ Vite::asset('resources/images/roti2.jpeg') }}">
+                            <img src="{{ Vite::asset('resources/images/BCoffeeBun.jpeg') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Coffee Bun</h5>
-                                <h5 class="card-title" style="color: #644961">Rp.10.500,00</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col py-4">
                         <div class="card h-100">
-                            <img src="{{ Vite::asset('resources/images/roti3.jpeg') }}">
+                            <img src="{{ Vite::asset('resources/images/BGarlicBread.jpeg') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Garlic Bread</h5>
-                                <h5 class="card-title" style="color: #644961">Rp.25.000,00</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col py-4">
                         <div class="card h-100">
-                            <img src="{{ Vite::asset('resources/images/roti4.jpeg') }}">
+                            <img src="{{ Vite::asset('resources/images/BRotiPizzaMini.jpeg') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Roti Pizza Mini</h5>
-                                <h5 class="card-title" style="color: #644961">Rp.12.000,00</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col py-4">
                         <div class="card h-100">
-                            <img src="{{ Vite::asset('resources/images/roti5.jpeg') }}">
+                            <img src="{{ Vite::asset('resources/images/BStuffedTunaBun.jpeg') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Stuffed Tuna Bun</h5>
-                                <h5 class="card-title" style="color: #644961">Rp.10.000,00</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col py-4">
                         <div class="card h-100">
-                            <img src="{{ Vite::asset('resources/images/pars6.jpeg') }}">
+                            <img src="{{ Vite::asset('resources/images/PCroissant.jpeg') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Croissant</h5>
-                                <h5 class="card-title" style="color: #644961">Rp.12.500,00</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col py-4">
                         <div class="card h-100">
-                            <img src="{{ Vite::asset('resources/images/pars7.jpeg') }}">
+                            <img src="{{ Vite::asset('resources/images/PCinnamonPalmiers.jpeg') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Cinnamon Palmiers</h5>
-                                <h5 class="card-title" style="color: #644961">Rp.6.000,00</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col py-4">
                         <div class="card h-100">
-                            <img src="{{ Vite::asset('resources/images/pars8.jpeg') }}">
+                            <img src="{{ Vite::asset('resources/images/PCinnamonRoll.jpeg') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Cinnamon Roll</h5>
-                                <h5 class="card-title" style="color: #644961">Rp.12.000,00</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col py-4">
                         <div class="card h-100">
-                            <img src="{{ Vite::asset('resources/images/pars9.jpeg') }}">
+                            <img src="{{ Vite::asset('resources/images/PBlackberryCreamCheese.jpeg') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Blackberry Cream Cheese</h5>
-                                <h5 class="card-title" style="color: #644961">Rp.25.000,00</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col py-4">
                         <div class="card h-100">
-                            <img src="{{ Vite::asset('resources/images/pars10.jpeg') }}">
+                            <img src="{{ Vite::asset('resources/images/PCromboloni.jpeg') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Cromboloni</h5>
-                                <h5 class="card-title" style="color: #644961">Rp.18.000,00</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col py-4">
                         <div class="card h-100">
-                            <img src="{{ Vite::asset('resources/images/cake1.jpeg') }}">
+                            <img src="{{ Vite::asset('resources/images/CBlueberryCheesecake.jpeg') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Blueberry Cheesecake</h5>
-                                <h5 class="card-title" style="color: #644961">Rp.42.000,00</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col py-4">
                         <div class="card h-100">
-                            <img src="{{ Vite::asset('resources/images/cake2.jpeg') }}">
+                            <img src="{{ Vite::asset('resources/images/CStrawberryLemonLayerCake.jpeg') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Strawberry Lemon Layer Cake</h5>
-                                <h5 class="card-title" style="color: #644961">Rp.40.000,00</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col py-4">
                         <div class="card h-100">
-                            <img src="{{ Vite::asset('resources/images/cake3.jpeg') }}">
+                            <img src="{{ Vite::asset('resources/images/CChocolateRaspberryCheesecake.jpeg') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Chocolate Raspberry Cheesecake</h5>
-                                <h5 class="card-title" style="color: #644961">Rp.45.000,00</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col py-4">
                         <div class="card h-100">
-                            <img src="{{ Vite::asset('resources/images/cake4.jpeg') }}">
+                            <img src="{{ Vite::asset('resources/images/CRedVelvet.jpeg') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Red Velvet</h5>
-                                <h5 class="card-title" style="color: #644961">Rp.42.000,00</h5>
                             </div>
                         </div>
                     </div>
                     <div class="col py-4">
                         <div class="card h-100">
-                            <img src="{{ Vite::asset('resources/images/cake5.jpeg') }}">
+                            <img src="{{ Vite::asset('resources/images/COperaCake.jpeg') }}">
                             <div class="card-body">
                                 <h5 class="card-title">Opera Cake</h5>
-                                <h5 class="card-title" style="color: #644961">Rp.40.000,00</h5>
                             </div>
                         </div>
                     </div>

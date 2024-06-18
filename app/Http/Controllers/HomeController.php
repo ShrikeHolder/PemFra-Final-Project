@@ -143,7 +143,6 @@ class HomeController extends Controller
     public function downloadFile($productId)
     {
         $product = Product::find($productId);
-
         if ($product && $product->encrypted_filename) {
             $encryptedFilename = 'public/files/' . $product->encrypted_filename;
             $extension = pathinfo($product->original_filename, PATHINFO_EXTENSION);
@@ -153,7 +152,6 @@ class HomeController extends Controller
                 return Storage::download($encryptedFilename, $downloadFilename);
             }
         }
-
         return redirect()->back()->with('error', 'File not found.');
     }
 }
