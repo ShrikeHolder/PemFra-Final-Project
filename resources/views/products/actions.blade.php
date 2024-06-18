@@ -8,7 +8,8 @@
     <form action="{{ route('products.destroy', ['product' => $product->id]) }}" method="POST">
         @csrf
         @method('delete')
-        <button type="submit" class="btn btn-outline-dark btn-sm me-2">
+        <button type="submit" class="btn btn-outline-dark btn-sm me-2 btn-delete"
+            data-name="{{ $product->name }}">
             <i class="bi-trash"></i>
         </button>
     </form>

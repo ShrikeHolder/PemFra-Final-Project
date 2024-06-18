@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class HomeController extends Controller
 {
@@ -19,6 +20,7 @@ class HomeController extends Controller
     public function index()
     {
         $pageTitle = 'Product List';
+        confirmDelete();
         $products = Product::all();
         return view('home', [
             'pageTitle' => $pageTitle,
@@ -65,6 +67,7 @@ class HomeController extends Controller
             $product->encrypted_filename = $encryptedFilename;
         }
         $product->save();
+        Alert::success('Added Successfully', 'Product Added Successfully.');
         return redirect()->route('products.index');
     }
 
@@ -125,8 +128,8 @@ class HomeController extends Controller
             $product->original_filename = $originalFilename;
             $product->encrypted_filename = $encryptedFilename;
         }
-
         $product->save();
+        Alert::success('Changed Successfully', 'Product Data Changed Successfully.');
         return redirect()->route('home');
     }
 
@@ -137,6 +140,7 @@ class HomeController extends Controller
             Storage::delete('public/files/' . $product->encrypted_filename);
         }
         $product->delete();
+        Alert::success('Deleted Successfully', 'Product Deleted Successfully.');
         return redirect()->route('home');
     }
 

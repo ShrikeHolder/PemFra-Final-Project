@@ -6,8 +6,7 @@
                 serverSide: true,
                 processing: true,
                 ajax: "/getProducts",
-                columns: [
-                    {
+                columns: [{
                         data: "name",
                         name: "name"
                     },
@@ -37,6 +36,23 @@
                     [10, 25, 50, 100, -1],
                     [10, 25, 50, 100, "All"],
                 ],
+            });
+        });
+        $(".datatable").on("click", ".btn-delete", function(e) {
+            e.preventDefault();
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            Swal.fire({
+                title: "Are you sure want to delete\n" + name + "?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "bg-primary",
+                confirmButtonText: "Yes, delete it!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
             });
         });
     </script>
@@ -69,7 +85,7 @@
         </div>
         <hr>
         <div class="table-responsive border p-3 rounded-3">
-            <table class="table table-bordered table-hover table-striped mb-0 bgwhite" id="productTable">>
+            <table class="table table-bordered table-hover table-striped mb-0 bgwhite datatable" id="productTable">>
                 <thead>
                     <tr style="text-align: center">
                         <th>Product Name</th>
