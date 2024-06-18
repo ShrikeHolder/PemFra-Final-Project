@@ -154,4 +154,17 @@ class HomeController extends Controller
         }
         return redirect()->back()->with('error', 'File not found.');
     }
+
+    public function getData(Request $request)
+    {
+        $products = Product::with('category');
+        if ($request->ajax()) {
+            return datatables()->of($products)
+                ->addIndexColumn()
+                ->addColumn('actions', function ($product) {
+                    return view('products.actions', compact('product'));
+                })
+                ->toJson();
+        }
+    }
 }
