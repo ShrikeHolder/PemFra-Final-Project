@@ -34,3 +34,5 @@ Route::resource('products', HomeController::class);
 Route::get('/products/download/{productId}', [HomeController::class, 'downloadFile'])->name('products.downloadFile');
 
 Route::get('getProducts', [HomeController::class, 'getData'])->name('products.getData');
+
+Route::get('exportExcel', [HomeController::class, 'exportExcel'])->name('products.exportExcel');
